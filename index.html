@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For My Baby Ruby ❤️</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="bg-lightpink font-sans overflow-x-hidden">
+    <!-- 🔐 PASSWORD SCREEN -->
+    <div
+      id="lockScreen"
+      class="fixed inset-0 bg-pinky opacity-100 flex flex-col items-center justify-center text-white z-50 px-6 text-center"
+    >
+      <h1 class="text-3xl font-extrabold mb-4">💖 Private Love Zone 💖</h1>
+      <p class="mb-6">Only for my baby(Gurmeet) 😘</p>
+      <input
+        id="password"
+        type="password"
+        placeholder="Enter secret word"
+        class="px-4 py-3 rounded-full text-black w-full max-w-xs text-center mb-4"
+      />
+      <button
+        onclick="unlock()"
+        class="bg-white text-pinky px-6 py-2 rounded-full font-bold"
+      >
+        Unlock ❤️
+      </button>
+    </div>
+
+    <!-- 🎵 MUSIC -->
+    <audio id="bgMusic" loop>
+      <source
+        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+      />
+    </audio>
+
+    <button
+      onclick="toggleMusic()"
+      class="fixed top-4 right-4 bg-white px-4 py-2 rounded-full shadow z-40 text-sm"
+    >
+      🎵 Music
+    </button>
+
+    <!-- 💖 HERO -->
+    <section class="pt-24 px-6 text-center">
+      <h1 class="text-5xl font-extrabold text-pinky mb-3 animate-bounce">
+        Hi Baby ❤️
+      </h1>
+      <p class="text-lg">
+        This website is made only for <br />
+        <span class="font-bold text-pinky">Gurmeet (Ruby)</span> 💕
+      </p>
+    </section>
+
+    <!-- 🧸 STICKERS -->
+    <div class="flex justify-center gap-4 text-4xl mt-6">🐻 💖 🥹 🐰</div>
+
+    <!-- 💌 MESSAGE -->
+    <section class="bg-white mx-4 mt-10 rounded-3xl p-6 shadow">
+      <h2 class="text-2xl font-bold text-pinky mb-3 text-center">
+        💌 My Heart Says
+      </h2>
+      <p id="typingText" class="text-center min-h-[90px]"></p>
+    </section>
+
+    <!-- 📸 GALLERY -->
+    <section class="mt-12 px-6">
+      <h2 class="text-2xl font-bold text-pinky text-center mb-4">
+        📸 Us Together
+      </h2>
+      <div class="grid grid-cols-2 gap-3">
+        <img src="/assets/together1.jpeg" class="rounded-2xl" />
+        <img src="/assets/together2.jpeg" class="rounded-2xl" />
+        <img src="/assets/together3.png" class="rounded-2xl" />
+        <img src="/assets/together4.png" class="rounded-2xl" />
+      </div>
+    </section>
+    <section class="mt-12 px-6">
+      <h2 class="text-2xl font-bold text-pinky text-center mb-4">
+        💍 Special Moments
+      </h2>
+      <div class="grid grid-cols-2 gap-3">
+        <img src="/assets/special1.png" class="rounded-2xl" />
+        <img src="/assets/special2.png" class="rounded-2xl" />
+        <img src="/assets/special3.jpeg" class="rounded-2xl" />
+        <img src="/assets/special4.png" class="rounded-2xl" />
+      </div>
+    </section>
+
+    <!-- 🎁 COUNTDOWN -->
+    <section class="bg-white mx-4 mt-12 rounded-3xl p-6 shadow text-center">
+      <h2 class="text-2xl font-bold text-pinky mb-3">🎁 Valentine Countdown</h2>
+      <p id="countdown" class="text-xl font-semibold"></p>
+    </section>
+
+    <!-- 💍 PROPOSAL -->
+    <section
+      class="bg-white mx-4 mt-12 rounded-3xl p-8 shadow text-center mb-16"
+    >
+      <h2 class="text-3xl font-extrabold text-pinky mb-6">
+        Will You Be My Valentine? 💍
+      </h2>
+
+      <!-- YES BUTTON (SAFE ZONE) -->
+      <button
+        onclick="sayYes()"
+        class="bg-pinky text-white py-3 rounded-full text-xl w-full mb-6 relative z-10"
+      >
+        YES BABY 💖
+      </button>
+
+      <!-- NO BUTTON PLAYGROUND -->
+      <div
+        id="noZone"
+        class="relative h-40 bg-lightpink rounded-2xl overflow-hidden flex items-center justify-center"
+      >
+        <button
+          id="noBtn"
+          onclick="moveNo()"
+          class="bg-gray-300 text-gray-800 py-3 px-6 rounded-full text-lg absolute"
+        >
+          NO 😐
+        </button>
+      </div>
+
+      <p id="yesText" class="mt-6 text-xl font-bold text-pinky"></p>
+    </section>
+
+    <!-- ❤️ FOOTER -->
+    <footer class="text-center text-xs text-gray-600 pb-6">
+      ❤️ from your forever admirer Dharm-Pati😘
+    </footer>
+
+    <!-- 🥹 ARE YOU SURE POPUP -->
+    <div
+      id="surePopup"
+      class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50"
+    >
+      <div class="bg-white rounded-2xl p-6 text-center mx-6">
+        <p class="text-xl font-bold text-pinky mb-4">Are you sure baby? 🥹💔</p>
+        <button
+          onclick="closePopup()"
+          class="bg-pinky text-white px-6 py-2 rounded-full"
+        >
+          Okay sorry 😭
+        </button>
+      </div>
+    </div>
+
+    <!-- 💕 JS -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              pinky: "#ff6f91",
+              lightpink: "#ffe4ec",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
