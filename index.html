@@ -35,16 +35,16 @@
     <!-- 🎵 MUSIC -->
     <audio id="bgMusic" loop>
       <source
-        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        src="https://res.cloudinary.com/rahuldemo/video/upload/v1770308264/tqqq9hqmhntxjla6tyxn.mp3"
       />
     </audio>
 
-    <button
+    <!-- <button
       onclick="toggleMusic()"
       class="fixed top-4 right-4 bg-white px-4 py-2 rounded-full shadow z-40 text-sm"
     >
       🎵 Music
-    </button>
+    </button> -->
 
     <!-- 💖 HERO -->
     <section class="pt-24 px-6 text-center">
@@ -65,7 +65,25 @@
       <h2 class="text-2xl font-bold text-pinky mb-3 text-center">
         💌 My Heart Says
       </h2>
-      <p id="typingText" class="text-center min-h-[90px]"></p>
+
+      <p id="typingText" class="text-center min-h-[90px] mb-6"></p>
+
+      <!-- 🎵 MUSIC PLAYER -->
+      <div class="flex justify-center">
+        <button
+          onclick="toggleMusic()"
+          id="musicBtn"
+          class="music-btn relative bg-lightpink text-pinky px-8 py-3 rounded-full text-sm font-bold shadow overflow-hidden"
+        >
+          <span id="musicIcon">🎵</span>
+          <span id="musicText">Play Music</span>
+
+          <!-- Equalizer -->
+          <span class="eq absolute bottom-1 left-1/2 -translate-x-1/2 hidden">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+      </div>
     </section>
 
     <!-- 📸 GALLERY -->
@@ -86,7 +104,10 @@
           src="https://res.cloudinary.com/rahuldemo/image/upload/v1770208620/bbhc5ircygqiqlfrpke9.jpg"
           class="rounded-2xl"
         />
-        <img src="/assets/together4.png" class="rounded-2xl" />
+        <img
+          src="https://res.cloudinary.com/rahuldemo/image/upload/v1770308916/pn15jhqpfx2ez4rz64h7.jpg"
+          class="rounded-2xl"
+        />
       </div>
     </section>
     <section class="mt-12 px-6">
@@ -106,7 +127,10 @@
           src="https://res.cloudinary.com/rahuldemo/image/upload/v1770208625/y9friredfcfqexo13fwq.jpg"
           class="rounded-2xl"
         />
-        <img src="/assets/special4.png" class="rounded-2xl" />
+        <img
+          src="https://res.cloudinary.com/rahuldemo/image/upload/v1770310061/wwybxjvsjplbcxlvzc8p.png"
+          class="rounded-2xl"
+        />
       </div>
     </section>
 

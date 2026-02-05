@@ -35,11 +35,45 @@ function createHearts() {
 }
 
 /* 🎵 Music */
-let playing = false;
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+const musicText = document.getElementById("musicText");
+const musicIcon = document.getElementById("musicIcon");
+const eq = document.querySelector(".eq");
+
+let isPlaying = false;
+
 function toggleMusic() {
-  const music = document.getElementById("bgMusic");
-  playing ? music.pause() : music.play();
-  playing = !playing;
+  if (!isPlaying) {
+    music.play();
+    musicText.innerText = "Music On";
+    musicIcon.innerText = "💖";
+    musicBtn.classList.add("playing");
+    eq.classList.remove("hidden");
+    spawnHearts();
+  } else {
+    music.pause();
+    musicText.innerText = "Play Music";
+    musicIcon.innerText = "🎵";
+    musicBtn.classList.remove("playing");
+    eq.classList.add("hidden");
+  }
+  isPlaying = !isPlaying;
+}
+
+/* 💗 Button Hearts */
+function spawnHearts() {
+  for (let i = 0; i < 6; i++) {
+    const heart = document.createElement("span");
+    heart.innerHTML = "💗";
+    heart.className = "btn-heart";
+    musicBtn.appendChild(heart);
+
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.animationDelay = i * 0.1 + "s";
+
+    setTimeout(() => heart.remove(), 1200);
+  }
 }
 
 /* 🎁 Countdown */
