@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>She Said YES 💖</title>
 
-    <!-- Tailwind config -->
+    <!-- Tailwind -->
     <script>
       tailwind.config = {
         theme: {
@@ -30,13 +30,12 @@
         position: fixed;
         font-size: 24px;
         animation: floatUp 6s linear forwards;
-        opacity: 0.8;
+        opacity: 0.9;
       }
 
       @keyframes floatUp {
         0% {
           transform: translateY(100vh) scale(0.8);
-          opacity: 1;
         }
         100% {
           transform: translateY(-10vh) scale(1.4);
@@ -47,11 +46,11 @@
       /* ✨ Glow frame */
       .glow {
         box-shadow:
-          0 0 25px rgba(255, 111, 145, 0.7),
-          0 0 50px rgba(255, 111, 145, 0.5);
+          0 0 25px rgba(255, 111, 145, 0.8),
+          0 0 60px rgba(255, 111, 145, 0.6);
       }
 
-      /* ✨ Glitter */
+      /* ✨ Sparkles */
       .sparkle {
         position: fixed;
         width: 6px;
@@ -71,40 +70,110 @@
           opacity: 0;
         }
       }
+
+      /* 💌 Love letter scroll */
+      .love-letter {
+        animation: scrollUp 50s linear infinite;
+      }
+
+      @keyframes scrollUp {
+        0% {
+          transform: translateY(40%);
+        }
+        100% {
+          transform: translateY(-100%);
+        }
+      }
     </style>
   </head>
 
   <body class="bg-lightpink flex items-center justify-center min-h-screen px-4">
+    <!-- 🎵 MUSIC TOGGLE -->
+    <button
+      id="musicToggle"
+      onclick="toggleMusic()"
+      class="fixed top-4 right-4 z-50 bg-white text-pinky px-4 py-2 rounded-full shadow-lg text-sm font-semibold flex items-center gap-2"
+    >
+      ▶️ Play Music
+    </button>
+    <!-- 🎵 MUSIC -->
+    <audio id="loveMusic" loop>
+      <!-- You can change this song later -->
+      <source
+        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+        type="audio/mp3"
+      />
+    </audio>
+
     <!-- 💖 MAIN CARD -->
     <div
       class="bg-white rounded-[2.5rem] p-8 text-center max-w-sm w-full glow relative z-10"
+      onclick="playMusic()"
     >
       <h1 class="text-4xl font-extrabold text-pinky mb-4 animate-bounce">
         SHE SAID YES 💍💖
       </h1>
 
-      <div class="text-5xl mb-4">💞</div>
+      <div class="text-5xl mb-4">🥹💞🫶</div>
 
       <p class="text-lg mb-4">
-        My baby <span class="font-bold text-pinky">Gurmeet (Ruby)</span>, you
-        just made me the happiest person alive 😭❤️
+        My baby <span class="font-bold text-pinky">Gurmeet (Ruby)</span>, this
+        YES changed my whole world ❤️
       </p>
 
-      <p class="text-sm text-gray-600 mb-6">
-        This YES is my favorite word now. I promise love, respect, laughter,
-        fights 😜 and forever holding your hand 🤞💖
-      </p>
-
-      <div class="border-4 border-dashed border-pinky rounded-2xl p-4 mb-6">
-        <p class="text-xl font-bold text-pinky">💌 Forever Yours 💌</p>
-        <p class="text-sm mt-2">From your Dharm-Pati 😘</p>
+      <p class="text-xs text-gray-500 mt-4">(💖 This letter is for you 💖)</p>
+      <!-- 💌 SCROLLING LOVE LETTER -->
+      <div
+        class="relative h-40 overflow-hidden border-4 border-dashed border-pinky rounded-2xl bg-lightpink p-4"
+      >
+        <div class="love-letter text-sm text-gray-700 leading-relaxed">
+          Baby ❤️<br /><br />
+          From the moment you came into my life, everything became softer,
+          warmer, and more meaningful.<br /><br />
+          Your smile heals me, your voice calms me, and your love completes me
+          🥹💖<br /><br />
+          I promise to stand by you in every season, laugh with you in
+          happiness, and hold you tighter in hard times 🤞<br /><br />
+          This YES is not just a word, it’s a lifetime, a forever, a dream come
+          true 💍✨<br /><br />
+          Always yours,<br />
+          Your Dharm-Pati 😘❤️
+        </div>
       </div>
 
-      <div class="text-3xl">💖 💍 💖</div>
+      <div class="text-3xl mt-4">💖 💍 💖</div>
     </div>
 
-    <!-- 💖 JS -->
+    <!-- 💕 JS EFFECTS -->
     <script>
+      const music = document.getElementById("loveMusic");
+      const toggleBtn = document.getElementById("musicToggle");
+      let isPlaying = false;
+
+      function toggleMusic() {
+        if (!isPlaying) {
+          music.play();
+          toggleBtn.innerHTML = "⏸️ Pause Music";
+        } else {
+          music.pause();
+          toggleBtn.innerHTML = "▶️ Play Music";
+        }
+        isPlaying = !isPlaying;
+      }
+
+      // Allow first tap anywhere to start music (mobile-safe)
+      document.body.addEventListener(
+        "click",
+        () => {
+          if (!isPlaying) {
+            music.play();
+            toggleBtn.innerHTML = "⏸️ Pause Music";
+            isPlaying = true;
+          }
+        },
+        { once: true },
+      );
+
       /* Floating hearts */
       setInterval(() => {
         const heart = document.createElement("div");
@@ -115,7 +184,7 @@
         setTimeout(() => heart.remove(), 6000);
       }, 300);
 
-      /* Glitter sparkles */
+      /* Sparkles */
       setInterval(() => {
         const sparkle = document.createElement("div");
         sparkle.className = "sparkle";
