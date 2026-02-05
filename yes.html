@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>I Knew You'd Say Yes 💖</title>
+    <title>She Said YES 💖</title>
 
+    <!-- Tailwind config -->
     <script>
       tailwind.config = {
         theme: {
@@ -18,24 +19,111 @@
       };
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        overflow: hidden;
+      }
+
+      /* 💖 Floating hearts */
+      .heart {
+        position: fixed;
+        font-size: 24px;
+        animation: floatUp 6s linear forwards;
+        opacity: 0.8;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(100vh) scale(0.8);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) scale(1.4);
+          opacity: 0;
+        }
+      }
+
+      /* ✨ Glow frame */
+      .glow {
+        box-shadow:
+          0 0 25px rgba(255, 111, 145, 0.7),
+          0 0 50px rgba(255, 111, 145, 0.5);
+      }
+
+      /* ✨ Glitter */
+      .sparkle {
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        background: white;
+        border-radius: 50%;
+        animation: sparkle 2s linear forwards;
+      }
+
+      @keyframes sparkle {
+        from {
+          transform: scale(1);
+          opacity: 1;
+        }
+        to {
+          transform: scale(0);
+          opacity: 0;
+        }
+      }
+    </style>
   </head>
 
-  <body class="bg-lightpink flex items-center justify-center min-h-screen px-6">
-    <div class="bg-white rounded-3xl p-8 shadow text-center max-w-md">
+  <body class="bg-lightpink flex items-center justify-center min-h-screen px-4">
+    <!-- 💖 MAIN CARD -->
+    <div
+      class="bg-white rounded-[2.5rem] p-8 text-center max-w-sm w-full glow relative z-10"
+    >
       <h1 class="text-4xl font-extrabold text-pinky mb-4 animate-bounce">
         SHE SAID YES 💍💖
       </h1>
 
-      <p class="text-lg mb-6">
-        Ruby, my baby, my forever… Thank you for choosing me every day 🥹❤️
+      <div class="text-5xl mb-4">💞</div>
+
+      <p class="text-lg mb-4">
+        My baby <span class="font-bold text-pinky">Gurmeet (Ruby)</span>, you
+        just made me the happiest person alive 😭❤️
       </p>
 
-      <div class="text-5xl mb-6">💖 💖 💖</div>
-
-      <p class="font-bold text-pinky">
-        Forever yours,
-        <br />Dharm-Pati 😘
+      <p class="text-sm text-gray-600 mb-6">
+        This YES is my favorite word now. I promise love, respect, laughter,
+        fights 😜 and forever holding your hand 🤞💖
       </p>
+
+      <div class="border-4 border-dashed border-pinky rounded-2xl p-4 mb-6">
+        <p class="text-xl font-bold text-pinky">💌 Forever Yours 💌</p>
+        <p class="text-sm mt-2">From your Dharm-Pati 😘</p>
+      </div>
+
+      <div class="text-3xl">💖 💍 💖</div>
     </div>
+
+    <!-- 💖 JS -->
+    <script>
+      /* Floating hearts */
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = Math.random() > 0.5 ? "💖" : "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }, 300);
+
+      /* Glitter sparkles */
+      setInterval(() => {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = Math.random() * 100 + "vw";
+        sparkle.style.top = Math.random() * 100 + "vh";
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 2000);
+      }, 150);
+    </script>
   </body>
 </html>
